@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             enableSystem
             disableTransitionOnChange
           >
-        <div className="flex flex-col min-h-screen bg-slate-200 dark:bg-slate-800 mx-auto  text-sm">
+        <div className="flex flex-col min-h-screen bg-neutral-200 dark:bg-neutral-950 mx-auto  text-sm">
         
         <Header/>
         
