@@ -1,8 +1,8 @@
-export default function Home() {
+export default function Page() {
   return (
     <div className="text-center pt-12">
       <h1 className="text-3xl capitalize font-bold mb-4">
-        Content for Main Page
+       view created sets
       </h1>
     </div>
   );
