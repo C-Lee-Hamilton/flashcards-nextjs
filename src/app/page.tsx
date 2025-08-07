@@ -1,9 +1,15 @@
+import FlipCard from "@/components/flipcard/flipcard";
+
 export default function Home() {
+  const front="Welcome to Flash Cards! Click to flip over and learn more.";
+   const back="Browse and search, community created, fully interactive flash card sets. Register and login to create custom sets and start learning! ";
   return (
-    <div className="text-center pt-12">
-      <h1 className="text-3xl capitalize font-bold mb-4">
-        Content for Main Page
-      </h1>
+    <div className="text-center flex-1  pt-12">
+      <div></div>
+        
+      <FlipCard front={front} back={back}/>
+      <div></div>
+    
     </div>
   );
 }

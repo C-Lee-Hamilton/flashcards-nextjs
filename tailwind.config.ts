@@ -7,8 +7,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class", // add this line
+  
   theme: {
     extend: {
+
+    
+ 
     },
   },
   plugins: [],

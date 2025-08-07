@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* max-w-[900px] */}
+        
              <ThemeProvider
             attribute="class"
             defaultTheme="system"
