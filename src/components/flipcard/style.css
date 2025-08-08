@@ -12,19 +12,35 @@
   align-items: center;
   justify-content: center;
   color: white !important;
+  cursor: pointer;
 }
 
 .card-flip {
   animation: card-flip-animation 1.5s ease-in-out forwards;
 }
 
+::-webkit-scrollbar {
+  background-color: red;
+  color: blue;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
 .text,
 .text-flip {
-  width: 160px;
+  width: 190px;
   height: 190px;
   padding-top: 20px;
   padding-bottom: 20px;
-  overflow: scroll;
+  overflow: auto;
   pointer-events: auto;
   background: transparent;
   overflow-wrap: break-word;

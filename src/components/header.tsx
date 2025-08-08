@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Icon from "@/app/favicon.ico";
 import IconText from "@/assets/logo-text.png"
+import MenuDropDown from "./menu";
+import {LoginMenu} from "./login";
 
 import {Plus} from "lucide-react";
 import {
@@ -34,18 +36,19 @@ export default function Header() {
        </div>
 
         <div className="flex gap-2   text-green-300">
-            <Link className="border-green-500 text-nowrap h-[30px] flex items-center justify-center border-l-2 text-md rounded-lg border-r-2 px-2"href="/browse-public">View Public</Link>
-            <Link className="border-green-500 text-nowrap h-[30px] flex items-center justify-center border-l-2 text-md rounded-lg border-r-2 px-2" href="/user-created">View Created</Link>
+          <LoginMenu/>
+            {/* <Link className=" text-nowrap  flex items-center justify-center font-bold text-md"href="/">Login</Link> */}
+            <Link className=" text-nowrap  flex items-center justify-center font-bold text-md"href="/browse">Explore Sets</Link>
+
+
             <Tooltip>
                 <TooltipTrigger asChild>
-                    <Link href="/create-new" className=" flex items-center justify-center rounded-md bg-stone-700 dark:bg-transparent cursor-pointer h-[30px] w-[30px]  border-1 border-green-500 dark:border-green-400">
-                        <Plus  className=" "/>
-                    </Link>
                 </TooltipTrigger>
                     <TooltipContent>
                     <p>Add to library</p>
                     </TooltipContent>
             </Tooltip>
+            <MenuDropDown/>
         </div>
 
 

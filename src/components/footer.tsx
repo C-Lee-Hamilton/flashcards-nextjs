@@ -5,7 +5,7 @@ export default function Footer() {
     <div  className="flex text-green-300  bg-linear-to-bl dark:from-stone-950 from-stone-400 to-stone-600 px-[5px] border-green-300 border-t-1 items-center mt-auto border-black/10 border-t h-[40px] px-5 ">
         <Link className="mx-auto text-left w-[33%]" href="/">Account Settings</Link>
         <Link className=" mx-auto text-center text-green-300 border-green-500 w-[33%] text-lg border-r-2 border-l-2 rounded-lg px-2" href="/">Login or Create Account</Link>
-        <div  className=" mx-auto text-right w-[33%]"> <ModeBtn/></div>
+        {/* <div  className=" mx-auto text-right w-[33%]"> <ModeBtn/></div> */}
     </div>
   );
 }
