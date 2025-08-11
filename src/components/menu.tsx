@@ -1,4 +1,3 @@
-// import Link from "next/link";
 import ModeBtn from "@/components/mode-toggle";
 import { AlignJustify,Plus, CircleQuestionMark,House} from "lucide-react"
 import {
@@ -10,8 +9,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
+import { LogoutLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default function MenuDropDown() {
+
+export default async function MenuDropDown() {
+
+  const {getUser} = getKindeServerSession();
+  const user = await getUser(); 
+
   return (
     <div>
         <DropdownMenu >
@@ -29,12 +35,16 @@ export default function MenuDropDown() {
            
              <DropdownMenuItem className="justify-between">About <CircleQuestionMark/></DropdownMenuItem>
              <DropdownMenuItem className="justify-between">
-                <Link className="flex items-center w-full justify-between" href="/dashboard">
+                <Link className="flex items-center w-full justify-between" href={user ? "/dashboard":"/"}>
                    Home
                 <House/></Link>
             </DropdownMenuItem>    
              <DropdownMenuSeparator className="bg-black h-[1px] dark:bg-white"/>
-            <DropdownMenuItem><Link href="/"className="mx-auto">Logout/In</Link></DropdownMenuItem>
+            <DropdownMenuItem>
+              {user? <LogoutLink className="mx-auto text-red-500">Log Out</LogoutLink> : <LoginLink className="mx-auto text-red-500">Login</LoginLink> }
+              
+              
+              </DropdownMenuItem>
         </DropdownMenuContent>
         </DropdownMenu>
  </div>

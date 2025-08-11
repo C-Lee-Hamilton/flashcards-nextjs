@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import {AuthProvider} from './AuthProvider';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   
   return (
+    <AuthProvider>
     <html lang="en" suppressHydrationWarning>
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -48,5 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </ThemeProvider>
       </body>
     </html>
+    </AuthProvider>
   );
 }
