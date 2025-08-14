@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { UserProvider } from "./UserContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        
+        <UserProvider>
              <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         </div>
         </ThemeProvider>
+        </UserProvider>
       </body>
     </html>
     </AuthProvider>
