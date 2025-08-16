@@ -3,49 +3,30 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import clientPromise from "@/lib/mongodb";
-
-import {redirect} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type Props={ 
 email:string | undefined | null;
 }
 
-export default function UserCreate(email:Props) {
-
+export default function UserCreate({email}:Props) {
+  const router=useRouter();
   const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   if (!email) throw new Error("No email, no account");
   
-  //check if username is taken, if not, create user account on mongo
+ const handleSubmit = async () => {
+  const res = await fetch("/api/create-user", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, username }),
+  });
+  const data = await res.json();
 
-  const createUser = async(name:string)=> {
-    const client = await clientPromise;
-    const db = client.db("flash-cards");
-    const users = db.collection("users");
-
-    let userCheck = await users.findOne({
-    username: new RegExp(`^${name}$`, 'i') // case-insensitive
-    });
-
-    if (userCheck) {
-         setErrorMessage("Username Already Exists");
-        throw new Error("Username already taken");
-     
-    }
-
-    else{
-        await users.insertOne({
-            email,
-            username: name,
-            pinnedSets: [],
-            lastViewed: "",
-            });
-
-        redirect("/dashboard");
-    }
-    }
+  if (!res.ok) {console.log(data.error); setErrorMessage("Username Already Exists...");}
+  else router.push("/dashboard");
+};
 
 
 return (
@@ -54,7 +35,7 @@ return (
       <Input value={username} onChange={(e)=>setUsername(e.target.value)}/>
 
       //hello, right here is my issue
-      <Button onClick={createUser(username)}>Submit</Button>
+      <Button onClick={handleSubmit}>Submit</Button>
       {errorMessage}
   
     </div>

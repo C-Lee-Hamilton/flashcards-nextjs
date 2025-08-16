@@ -5,7 +5,7 @@ export default async function Page() {
   //get login email
   const {getUser} = getKindeServerSession();
   const userData = await getUser();
-  const email = userData?.email;
+  const email = String(userData?.email);
 
 return (
     <div className="text-center flex-1  pt-12">
